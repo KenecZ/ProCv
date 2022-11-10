@@ -10,4 +10,6 @@ public class ProCvApplication {
         SpringApplication.run(ProCvApplication.class, args);
     }
 
+
+
 }

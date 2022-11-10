@@ -3,13 +3,13 @@ package pe.edu.upc.procv.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="students")
-public class Student {
+@Table(name="teachers")
+public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_student")
-    private int idStudent;
+    @Column(name="id_teacher")
+    private int idTeacher;
 
     @Column(name="first_name")
     private String firstName;
@@ -26,11 +26,11 @@ public class Student {
     @Column(name="cellphone")
     private String cellphone;
 
-    public Student() {
+    public Teacher() {
     }
 
-    public Student(int idStudent, String firstName, String lastName, String dni, String email, String cellphone) {
-        this.idStudent = idStudent;
+    public Teacher(int idTeacher, String firstName, String lastName, String dni, String email, String cellphone) {
+        this.idTeacher = idTeacher;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
@@ -38,8 +38,8 @@ public class Student {
         this.cellphone = cellphone;
     }
 
-    public int getIdStudent() {
-        return idStudent;
+    public int getIdTeacher() {
+        return idTeacher;
     }
 
     public String getFirstName() {
@@ -62,8 +62,8 @@ public class Student {
         return cellphone;
     }
 
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
+    public void setIdTeacher(int idTeacher) {
+        this.idTeacher = idTeacher;
     }
 
     public void setFirstName(String firstName) {
