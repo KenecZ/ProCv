@@ -7,7 +7,7 @@ import pe.edu.upc.procv.model.ServiceType;
 import pe.edu.upc.procv.service.ServiceTypeService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/serviceTypes")
 public class ServiceTypeController {

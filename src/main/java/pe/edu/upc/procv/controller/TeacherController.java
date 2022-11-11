@@ -7,7 +7,7 @@ import pe.edu.upc.procv.model.Teacher;
 import pe.edu.upc.procv.service.TeacherService;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/teachers")
 public class TeacherController {

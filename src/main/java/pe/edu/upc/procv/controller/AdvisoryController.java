@@ -8,6 +8,7 @@ import pe.edu.upc.procv.service.AdvisoryService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/advisories")
 public class AdvisoryController {
