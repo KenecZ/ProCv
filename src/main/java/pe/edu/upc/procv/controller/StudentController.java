@@ -4,9 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.procv.model.Student;
+import pe.edu.upc.procv.repository.StudentRepository;
 import pe.edu.upc.procv.service.StudentService;
+import pe.edu.upc.procv.service.impl.StudentServiceImpl;
 
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import pe.edu.upc.procv.util.studentexcel;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;  
+
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/students")
@@ -64,5 +72,22 @@ public class StudentController {
         } catch(Exception e) {
             return ResponseEntity.internalServerError().body(e);
         }
+    }
+    @GetMapping("/students/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+
+        response.setContentType("application/octet-stream");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=result_student";
+        response.setHeader(headerKey, headerValue);
+
+        List<Student> students = studentService.findAll();
+
+        studentexcel excelExporter = new studentexcel(students);
+
+        excelExporter.export(response);
+
+
     }
 }
