@@ -73,7 +73,7 @@ public class StudentController {
             return ResponseEntity.internalServerError().body(e);
         }
     }
-    @GetMapping("/students/export/excel")
+    @GetMapping("/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
 
         response.setContentType("application/octet-stream");
