@@ -33,9 +33,11 @@ public class studentexcel {
         font.setFontHeight(16);
         style.setFont(font);
 
-        createCell(row, 0, "id_student", style);
+        createCell(row, 0, "first_name", style);
         createCell(row, 1, "last_name", style);
         createCell(row, 2, "dni", style);
+        createCell(row, 3, "email", style);
+        createCell(row, 4, "cellphone", style);
 
     }
 
@@ -69,9 +71,11 @@ public class studentexcel {
 
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
-            createCell(row, columnCount++, String.valueOf(result.getIdStudent()), style);
+            createCell(row, columnCount++, result.getFirstName(), style);
             createCell(row, columnCount++, result.getLastName(), style);
             createCell(row, columnCount++, result.getDni(), style);
+            createCell(row, columnCount++, result.getEmail(),style);
+            createCell(row, columnCount++, result.getCellphone(),style); 
 
         }
     }
