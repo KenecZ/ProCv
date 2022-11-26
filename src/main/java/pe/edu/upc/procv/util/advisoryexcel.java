@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.edu.upc.procv.model.Student;
+import pe.edu.upc.procv.model.Advisory;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,13 +13,14 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class studentexcel {
+public class advisoryexcel {
+    
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Student> students;
+    private List<Advisory> advisorys;
 
-    public studentexcel(List<Student> students) {
-        this.students = students;
+    public advisoryexcel(List<Advisory> advisorys) {
+        this.advisorys = advisorys;
         workbook = new XSSFWorkbook();
     }
 
@@ -33,12 +34,11 @@ public class studentexcel {
         font.setFontHeight(16);
         style.setFont(font);
 
-        createCell(row, 0, "Id Student", style);
-        createCell(row, 1, "first_name", style);
-        createCell(row, 2, "last_name", style);
-        createCell(row, 3, "dni", style);
-        createCell(row, 4, "email", style);
-        createCell(row, 5, "cellphone", style);
+        createCell(row, 0, "ID Advisory", style);
+        createCell(row, 1, "Date", style);
+        createCell(row, 2, "ServiceType", style);
+        createCell(row, 3, "Teacher", style);
+        createCell(row, 4, "Student", style);
 
     }
 
@@ -68,16 +68,15 @@ public class studentexcel {
         font.setFontHeight(14);
         style.setFont(font);
 
-        for( Student result: students) {
+        for( Advisory result: advisorys) {
 
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
-            createCell(row, columnCount++, String.valueOf(result.getIdStudent()),style);
-            createCell(row, columnCount++, result.getFirstName(), style);
-            createCell(row, columnCount++, result.getLastName(), style);
-            createCell(row, columnCount++, result.getDni(), style);
-            createCell(row, columnCount++, result.getEmail(),style);
-            createCell(row, columnCount++, result.getCellphone(),style); 
+            createCell(row, columnCount++, String.valueOf(result.getIdAdvisory()),style);
+            createCell(row, columnCount++, result.getDate(), style);
+            createCell(row, columnCount++, result.getServiceType(), style);
+            createCell(row, columnCount++, result.getTeacher(),style);
+            createCell(row, columnCount++, result.getStudent(),style); 
 
         }
     }
@@ -91,5 +90,4 @@ public class studentexcel {
         workbook.close();
         servletOutput.close();
     }
-
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
-import pe.edu.upc.procv.model.Student;
+import pe.edu.upc.procv.model.Teacher;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,13 +13,13 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class studentexcel {
+public class teacherexcel {
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Student> students;
+    private List<Teacher> teachers;
 
-    public studentexcel(List<Student> students) {
-        this.students = students;
+    public teacherexcel(List<Teacher> teachers) {
+        this.teachers = teachers;
         workbook = new XSSFWorkbook();
     }
 
@@ -33,7 +33,7 @@ public class studentexcel {
         font.setFontHeight(16);
         style.setFont(font);
 
-        createCell(row, 0, "Id Student", style);
+        createCell(row, 0, "first_name", style);
         createCell(row, 1, "first_name", style);
         createCell(row, 2, "last_name", style);
         createCell(row, 3, "dni", style);
@@ -68,11 +68,11 @@ public class studentexcel {
         font.setFontHeight(14);
         style.setFont(font);
 
-        for( Student result: students) {
+        for( Teacher result: teachers) {
 
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
-            createCell(row, columnCount++, String.valueOf(result.getIdStudent()),style);
+            createCell(row, columnCount++, String.valueOf(result.getIdTeacher()),style);
             createCell(row, columnCount++, result.getFirstName(), style);
             createCell(row, columnCount++, result.getLastName(), style);
             createCell(row, columnCount++, result.getDni(), style);
@@ -91,5 +91,4 @@ public class studentexcel {
         workbook.close();
         servletOutput.close();
     }
-
 }

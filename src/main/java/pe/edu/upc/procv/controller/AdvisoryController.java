@@ -5,8 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.procv.model.Advisory;
 import pe.edu.upc.procv.service.AdvisoryService;
+import pe.edu.upc.procv.util.advisoryexcel;
 
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import pe.edu.upc.procv.util.advisoryexcel;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;  
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -65,5 +70,22 @@ public class AdvisoryController {
         } catch(Exception e) {
             return ResponseEntity.internalServerError().body(e);
         }
+    }
+    @GetMapping("/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+
+        response.setContentType("application/octet-stream");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=result_advisory";
+        response.setHeader(headerKey, headerValue);
+
+        List<Advisory> advisories = advisoryService.findAll();
+
+        advisoryexcel excelExporter = new advisoryexcel(advisories);
+
+        excelExporter.export(response);
+
+
     }
 }
