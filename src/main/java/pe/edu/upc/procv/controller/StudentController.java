@@ -23,7 +23,6 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-    private final StudentRepository studentRepository;
     @GetMapping
     public ResponseEntity<?> listAll() {
         try {
@@ -78,7 +77,7 @@ public class StudentController {
     @Transactional(readOnly = true)
     public ResponseEntity<List<Product>> searchByName(@PathVariable String name){
         List<Student> students=new ArrayList<>();
-        students=studentRepository.findByNameLike(name);
+        students=studentService.findByNameLike(name);
         return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
     }
     
