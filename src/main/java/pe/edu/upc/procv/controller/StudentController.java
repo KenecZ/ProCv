@@ -7,7 +7,7 @@ import pe.edu.upc.procv.model.Student;
 import pe.edu.upc.procv.repository.StudentRepository;
 import pe.edu.upc.procv.service.StudentService;
 import pe.edu.upc.procv.service.impl.StudentServiceImpl;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.upc.procv.util.studentexcel;
@@ -23,7 +23,7 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-
+    private final StudentRepository studentRepository;
     @GetMapping
     public ResponseEntity<?> listAll() {
         try {
@@ -78,6 +78,7 @@ public class StudentController {
     @Transactional(readOnly = true)
     public ResponseEntity<List<Product>> searchByName(@PathVariable String name){
         List<Student> students=new ArrayList<>();
+        students=studentRepository.findByNameLike(name);
         return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
     }
     
