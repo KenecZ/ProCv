@@ -33,10 +33,6 @@ public class StudentServiceImpl implements StudentService {
     public Student update(Student student) {
         return studentRepository.save(student);
     }
-    @Override
-    public List <Student> findbyName(String name){
-        return studentRepository.findByNameLike(name);
-    }
 
     @Override
     public void deleteById(int idStudent) {
