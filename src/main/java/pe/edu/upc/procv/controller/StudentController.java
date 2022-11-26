@@ -8,6 +8,7 @@ import pe.edu.upc.procv.repository.StudentRepository;
 import pe.edu.upc.procv.service.StudentService;
 import pe.edu.upc.procv.service.impl.StudentServiceImpl;
 
+import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletResponse;
 import pe.edu.upc.procv.util.studentexcel;
 import java.io.IOException;
