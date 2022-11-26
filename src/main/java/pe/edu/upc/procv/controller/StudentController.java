@@ -73,13 +73,6 @@ public class StudentController {
             return ResponseEntity.internalServerError().body(e);
         }
     }
-    @GetMapping("/filter/{name}")
-    @Transactional(readOnly = true)
-    public ResponseEntity<List<Product>> searchByName(@PathVariable String name){
-        List<Student> students=new ArrayList<>();
-        students=studentService.findbyName(name);
-        return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
-    }
     
     @GetMapping("/export/excel")
     public void exportToExcel(HttpServletResponse response) throws IOException {
