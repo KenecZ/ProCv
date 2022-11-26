@@ -77,7 +77,7 @@ public class StudentController {
     @Transactional(readOnly = true)
     public ResponseEntity<List<Product>> searchByName(@PathVariable String name){
         List<Student> students=new ArrayList<>();
-        students=studentService.findByNameLike(name);
+        students=studentService.findbyName(name);
         return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
     }
     
