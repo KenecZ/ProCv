@@ -33,7 +33,7 @@ public class teacherexcel {
         font.setFontHeight(16);
         style.setFont(font);
 
-        createCell(row, 0, "first_name", style);
+        createCell(row, 0, "ID teacher", style);
         createCell(row, 1, "first_name", style);
         createCell(row, 2, "last_name", style);
         createCell(row, 3, "dni", style);
